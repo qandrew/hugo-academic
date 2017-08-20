@@ -10,10 +10,17 @@
     {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
     {{ if gt $posts_len $page.Params.count }}
     <p class="view-all">
+      {{ if $page.Params.link}}
+      <a href="{{ $page.Params.link | relLangURL }}">
+        {{ i18n "more_posts" | markdownify }}
+        <i class="fa fa-angle-double-right"></i>
+      </a>
+      {{ else }}
       <a href="{{ "/post/" | relLangURL }}">
         {{ i18n "more_posts" | markdownify }}
         <i class="fa fa-angle-double-right"></i>
       </a>
+      {{ end }}
     </p>
     {{ end }}
 

@@ -14,14 +14,40 @@
   {{ $paginator := .Paginate .Data.Pages }}
   {{ range $paginator.Pages }}
   <div>
-    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-    <div class="article-style">
-      {{ if .Params.summary }}
-      {{ printf "%s" .Params.summary | markdownify }}
-      {{ else if .Truncated }}
-      {{ printf "%s" .Summary | markdownify }}
+    {{ if ne .Params.show false }}
+      {{ if .Params.pic }}
+      <div class = "row">
+        <div class="col-sm-8">
+          <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          {{ partial "article_metadata" (dict "content" . "is_list" 1) }}
+          <div class="article-style">
+            {{ if .Params.summary }}
+            {{ printf "%s" .Params.summary | markdownify }}
+            {{ else if .Truncated }}
+            {{ printf "%s" .Summary | markdownify }}
+            {{ else }}
+            {{ .Content }}
+            {{ end }}
+          </div>
+        </div>
+        <div class="col-sm-4 article-pic">
+          <a href="{{ .Permalink }}"><img src="{{ .Params.pic }}" itemprop="image"></a>
+        </div>
+      </div>
+      {{ else}} 
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        {{ partial "article_metadata" (dict "content" . "is_list" 1) }}
+        <div class="article-style"><p>
+          {{ if .Params.summary }}
+          {{ printf "%s" .Params.summary | markdownify }}
+          {{ else if .Truncated }}
+          {{ printf "%s" .Summary | markdownify }}
+          {{ else }}
+          {{ .Content }}
+          {{ end }}
+        </p></div>
       {{ end }}
-    </div>
+    {{ end }}
   </div>
   {{ end }}
 

@@ -50,6 +50,17 @@
         {{ end }}
         {{ end }}
 
+        <div class="btn-group">
+          <a href="/tags/art" class="btn btn-default" role="button">Art</a>
+          <button type="button" class="btn btn-default navbutton dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+          </button>
+          <div class="dropdown-menu">
+            <li><a href="/tags/photo">Photo</a></li>
+            <li><a href="/tags/video">Video</a></li>
+          </div>
+        </div>
+
         {{ if .IsTranslated }}
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
