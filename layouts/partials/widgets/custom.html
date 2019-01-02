@@ -6,6 +6,14 @@
   <div class="col-12 col-lg-4 section-heading">
     <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
     {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
+    <p class="view-all">
+      {{ if $page.Params.link}}
+      <a href="{{ $page.Params.link | relLangURL }}">
+        {{ i18n "more_posts" | markdownify }}
+        <i class="fa fa-angle-double-right"></i>
+      </a>
+      {{ end }}
+    </p>
   </div>
   <div class="col-12 col-lg-8">
     {{ $page.Content }}
