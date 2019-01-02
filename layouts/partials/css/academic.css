@@ -26,7 +26,7 @@ body {
   line-height: inherit;
   color: inherit;
   background-color: {{ .Get "background" }};
-  margin-top: 70px; /* Offset body content by navbar height. */
+  margin-top: 51px; /* Offset body content by navbar height. */
   padding-top: 0;
   counter-reset: captions;
 }
@@ -100,6 +100,7 @@ h3 {
   font-weight: 700;
   margin-top: 1.5rem;
   font-size: 1.25rem;
+  /* TODO make it larger*/
 }
 h4, h5, h6 {
   font-weight: 700;
@@ -112,6 +113,11 @@ h3.article-title a:hover {
   color: {{ .Get "link" }};
   text-decoration: none;
   transition: color 0.6s ease;
+}
+
+a {
+  font-weight:bold ;
+  /*text-decoration: underline*/
 }
 
 a:hover,
@@ -482,13 +488,13 @@ a[data-fancybox] img {
 
 .home-section {
   background-color: {{ .Get "home_section_odd" }};
-  padding: 110px 0 110px 0;
+  padding: 50px 0 20px 0;
   animation: intro 0.3s both;
   animation-delay: 0.15s;
 }
 
 .home-section:first-of-type {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .home-section:nth-of-type(even) {
@@ -749,7 +755,7 @@ article {
 }
 
 .article-container {
-  max-width: 760px;
+  max-width: 1000px;
   padding: 0 20px 0 20px;
   margin: 0 auto 0 auto;
 }
@@ -800,6 +806,10 @@ article {
 .article-header {
   position: relative; /* Required for caption positioning */
   clear: both;
+  /*max-height: 600px;*/
+  /*overflow: hidden;*/
+  /*top: 50%;
+  transform: translateY(-50%);*/
 }
 
 .article-banner {
@@ -1559,7 +1569,7 @@ a.badge:hover {
  **************************************************/
 
 .navbar {
-  min-height: 70px !important;
+  min-height: 30px !important;
 }
 
 .navbar-light {
@@ -1616,9 +1626,10 @@ nav#navbar-main li.nav-item {
 .navbar-brand,
 .navbar-nav li.nav-item a.nav-link {
   height: inherit;
-  line-height: 50px;
+  line-height: 30px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  /*padding-bottom: 10px;*/
+  /*padding: 10px 10px 10px 0px;*/
 }
 
 .navbar-brand img {
