@@ -16,18 +16,13 @@
 
   {{ $paginator := .Paginate .Data.Pages }}
   {{ range $paginator.Pages }}
-  <div>
-    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-    <div class="article-style">
-      {{ if .Params.summary }}
-      {{ .Params.summary | plainify | emojify }}
-      {{ else if .Params.abstract }}
-      {{ .Params.abstract | plainify | emojify | truncate 250 }}
-      {{ else if .Summary }}
-      {{ .Summary | plainify | emojify }}
-      {{ end }}
-    </div>
-  </div>
+    {{ if eq $.Params.list_format 0 }}
+      {{ partial "post_li_simple" . }}
+    {{ else if eq $.Params.list_format 1 }}
+      {{ partial "post_li_detailed" . }}
+    {{ else }}
+      {{ partial "post_li_stream" . }}
+    {{ end }}
   {{ end }}
 
   {{ partial "pagination" . }}
